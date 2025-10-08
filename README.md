@@ -1,4 +1,4 @@
-# 🛰 DARPA Naming Protocol v3
+# 🛰 D Naming Protocol v3
 
 Полностью автономный CLI-инструмент, который:
 
@@ -40,7 +40,7 @@
    ```bash
    mkdir -p ~/.dnp
    cat > ~/.dnp/config.yaml <<EOF
-   root_dir: /home/$USER/Projects/DARPA
+   root_dir: /home/$USER/Projects/D
    default_type: LAB
    default_domain: CORE
    git_init: true
@@ -65,7 +65,7 @@ dnp create proto billing --prefix=ARGUS --desc="SaaS биллинг с инте�
 
 ```
 Создан проект: ARGUS-PROTO-BILLING
-Расположение: ~/Projects/DARPA/argus-proto-billing/
+Расположение: ~/Projects/D/argus-proto-billing/
 Git инициализирован: ✅
 GitHub репозиторий создан: https://github.com/username/argus-proto-billing
 Первый коммит запушен на GitHub: ✅
@@ -76,7 +76,7 @@ GitHub репозиторий создан: https://github.com/username/argus-pr
 ## 🧱 Структура созданного проекта
 
 ```
-~/Projects/DARPA/argus-proto-billing/
+~/Projects/D/argus-proto-billing/
 ├── cmd/
 │   └── main.go
 ├── internal/
@@ -116,7 +116,7 @@ DNP v3 теперь поддерживает автоматическое раз
 Файл `~/.dnp/config.yaml`:
 
 ```yaml
-root_dir: /home/user/Projects/DARPA      # Корневая папка для проектов
+root_dir: /home/user/Projects/D      # Корневая папка для проектов
 default_type: LAB                        # Тип по умолчанию
 default_domain: CORE                     # Домен по умолчанию
 git_init: true                          # Инициализировать Git
@@ -130,7 +130,7 @@ github_token: "ghp_..."                 # Токен GitHub (опциональ�
 Все созданные проекты логируются в `~/.dnp/projects.log`:
 
 ```
-2025-10-08 13:04 — ARGUS-PROTO-BILLING (/home/user/Projects/DARPA/argus-proto-billing)
+2025-10-08 13:04 — ARGUS-PROTO-BILLING (/home/user/Projects/D/argus-proto-billing)
 ```
 
 ---

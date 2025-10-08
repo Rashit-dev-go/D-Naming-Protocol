@@ -50,7 +50,7 @@ func loadConfig() Config {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return Config{
-			RootDir:       filepath.Join(os.Getenv("HOME"), "Projects", "DARPA"),
+			RootDir:       filepath.Join(os.Getenv("HOME"), "Projects", "D"),
 			DefaultType:   "LAB",
 			DefaultDomain: "CORE",
 			GitInit:       true,
@@ -158,7 +158,7 @@ func listProjects() {
 		fmt.Println("Проекты пока не создавались.")
 		return
 	}
-	fmt.Println("== DARPA Project Registry ==")
+	fmt.Println("== D Project Registry ==")
 	fmt.Println(string(data))
 }
 
