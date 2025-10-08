@@ -16,11 +16,11 @@ import (
 )
 
 type Config struct {
-	RootDir       string `yaml:"root_dir"` 
-	DefaultType   string `yaml:"default_type"` 
-	DefaultDomain string `yaml:"default_domain"` 
-	GitInit       bool   `yaml:"git_init"` 
-	GitHubToken   string `yaml:"github_token"` 
+	RootDir       string `yaml:"root_dir"`
+	DefaultType   string `yaml:"default_type"`
+	DefaultDomain string `yaml:"default_domain"`
+	GitInit       bool   `yaml:"git_init"`
+	GitHubToken   string `yaml:"github_token"`
 }
 
 var prefixes = []string{"ARES", "ARGUS", "HYDRA", "PHOENIX", "RAVEN", "NEXUS", "CRONUS", "VORTEX", "SIGMA", "ECHO"}
@@ -135,7 +135,7 @@ test:
 		cmd.Run()
 		exec.Command("git", "-C", projectPath, "add", ".").Run()
 		exec.Command("git", "-C", projectPath, "commit", "-m", "Initial commit").Run()
-		
+
 		// Create GitHub repo and push
 		if cfg.GitHubToken != "" {
 			createGitHubRepoAndPush(cfg.GitHubToken, projectPath, strings.ToLower(name), *descFlag)
@@ -180,14 +180,14 @@ func getArg(args []string, index int, fallback string) string {
 func createGitHubRepoAndPush(token, projectPath, repoName, description string) {
 	ctx := context.Background()
 	client := github.NewTokenClient(ctx, token)
-	
+
 	// Get current user
 	user, _, err := client.Users.Get(ctx, "")
 	if err != nil {
 		fmt.Printf("Ошибка получения пользователя GitHub: %v\n", err)
 		return
 	}
-	
+
 	// Create repository
 	repo := &github.Repository{
 		Name:        &repoName,
@@ -199,14 +199,14 @@ func createGitHubRepoAndPush(token, projectPath, repoName, description string) {
 		fmt.Printf("Ошибка создания репозитория GitHub: %v\n", err)
 		return
 	}
-	
+
 	// Set remote origin
 	originURL := fmt.Sprintf("https://github.com/%s/%s.git", *user.Login, repoName)
 	exec.Command("git", "-C", projectPath, "remote", "add", "origin", originURL).Run()
-	
+
 	// Push to GitHub
 	exec.Command("git", "-C", projectPath, "push", "-u", "origin", "main").Run()
-	
+
 	fmt.Printf("GitHub репозиторий создан: %s\n", *createdRepo.HTMLURL)
 	fmt.Println("Первый коммит запушен на GitHub: ✅")
 }
